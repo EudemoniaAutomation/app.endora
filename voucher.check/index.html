@@ -85,26 +85,26 @@
 
     <div class="card">
       <h1>Voucher Check</h1>
-      <p class="muted">Bitte unten prüfen, ob der Voucher noch gültig ist:</p>
+      <p class="muted">Please check if the voucher is still valid:</p>
 
       <div class="result" id="result">
         <div class="loading" id="loading">
           <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-          <span>Lädt Prüfung …</span>
+          <span>Checking Database...</span>
         </div>
         <iframe id="frame" class="frame" title="Voucher Result" hidden></iframe>
       </div>
 
       <div class="footer">
         <div class="pill">All rights reserved by Eudemonia</div>
-        <div>Questions? <a href="mailto:info@eudemonia-coaching.de">info@eudemonia-coaching.de</a></div>
+        <div>Questions? <a href="mailto:info@endora.io">info@endora.io</a></div>
       </div>
     </div>
   </div>
 
   <script>
     // ---------- Config ----------
-    const FUNCTION_URL = 'https://ipqyenvbffttehcjtohx.functions.supabase.co/r';
+    const FUNCTION_URL = 'https://automation.eudemonia-coaching.de/webhook/voucher/check';
 
     // ---------- Token aus URL ----------
     const params = new URLSearchParams(location.search);
@@ -115,7 +115,7 @@
     const $result  = document.getElementById('result');
 
     if (!token) {
-      $result.innerHTML = '<div class="error">⚠️ Kein Token übergeben. Bitte den Link aus dem QR-Code öffnen.</div>';
+      $result.innerHTML = '<div class="error">⚠️ No Token trasferred. Please open the link from the QR-Code.</div>';
     } else {
       (async () => {
         const target = FUNCTION_URL + '?t=' + encodeURIComponent(token);
